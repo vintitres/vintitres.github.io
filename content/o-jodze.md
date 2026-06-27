@@ -17,5 +17,5 @@ Możesz tu używać standardowego Markdown, na przykład:
 
 - list punktowanych,
 - **pogrubienia**,
-- [linków (zajęcia)](@/zajecia/),
+- [linków (zajęcia)](@zajecia/),
 - nagłówków.
