@@ -1,0 +1,4 @@
+phone_label = "+48 123 456 789"
+phone_url = "tel:+48123456789"
+email_label = "kontakt@example.com"
+email_url = "mailto:kontakt@example.com"
