@@ -1,28 +1,63 @@
 # yojoga
 
-This site is built with [Zola](https://www.getzola.org/).
+Static site built with [Zola](https://www.getzola.org/).
 
-## Editing content
+## Editing page content
 
-- Site config: `config.toml`
-- Shared layout: `templates/base.html`
-- Shared `<head>`: `templates/partials/head.html`
-- Header/navigation markup: `templates/partials/header.html`
-- Footer markup: `templates/partials/footer.html`
-- Navigation items: `data/navigation.toml`
+For normal content changes, edit only the Markdown files in `content/`:
+
+- Home: `content/_index.md`
+- Contact: `content/kontakt.md`
+- Classes: `content/zajecia.md`
+- About yoga: `content/o-jodze.md`
+
+Markdown internal links should use Zola's page-link syntax so they work both on production and `/test_main/`:
+
+```md
+[Kontakt](@/kontakt.md)
+[Zajęcia](@/zajecia.md)
+[O Jodze](@/o-jodze.md)
+```
+
+External links use normal Markdown:
+
+```md
+[Instagram](https://www.instagram.com/yojogapol)
+```
+
+Raw HTML can be placed directly in Markdown when needed. The home page contains a small example using `<div class="html-example">...</div>`.
+
+## Editing structured data
+
+Use these files for values that are reused by templates/shortcodes:
+
+- Navigation: `data/navigation.toml`
 - Social links: `data/social.toml`
 - Contact phone/email: `data/contact.toml`
-- Class schedule data: `data/schedule.toml`
-- Schedule table shortcode: `templates/shortcodes/schedule_table.html`
-- Page content:
-  - Home: `content/_index.md`
-  - Contact: `content/kontakt.md`
-  - Classes: `content/zajecia.md`
-  - About yoga: `content/o-jodze.md`
+- Class schedule: `data/schedule.toml`
 
-The visible page content lives in Markdown files under `content/`. Templates in `templates/` provide layout and reusable rendering. The home page also includes a small raw HTML example inside Markdown.
+The classes page uses this shortcode in Markdown:
 
+```md
+{{ schedule_table() }}
+```
 
+The contact page uses this shortcode in Markdown:
+
+```md
+{{ contact_cards() }}
+```
+
+## Layout and components
+
+You usually do not need to edit these for content updates:
+
+- Shared layout: `templates/base.html`
+- Page templates: `templates/home.html`, `templates/contact.html`, `templates/classes.html`, `templates/yoga.html`
+- Header/head/footer: `templates/partials/`
+- Shortcodes: `templates/shortcodes/`
+- Styles: `static/style.css`
+- Static assets: `static/`
 
 ## Running locally
 
@@ -32,13 +67,19 @@ Install Zola, then run:
 zola serve
 ```
 
-Then open `http://127.0.0.1:1111`.
+Open:
+
+```text
+http://127.0.0.1:1111
+```
 
 To test a production build:
 
 ```sh
 zola build
 ```
+
+Generated output goes to `public/`, which is ignored by git.
 
 ## Deployment
 
@@ -49,6 +90,8 @@ Pushes to `main` and pushes to release tags both deploy one combined GitHub Page
 - latest release tag → `https://vintitres.github.io/`
 - current `main` → `https://vintitres.github.io/test_main/`
 
+The `/test_main/` version shows a persistent test banner. Crawlers are asked not to index it via `static/robots.txt`.
+
 Release tag names should match one of these patterns:
 
 - `release-*`, for example `release-2026-06-27`
@@ -58,11 +101,11 @@ On a `main` push, the workflow finds the latest release tag by tag creation date
 
 On a release tag push, the pushed tag is deployed at `/`, and current `main` is deployed at `/test_main/`.
 
-In the repository settings, make sure **Settings → Pages → Build and deployment → Source** is set to **GitHub Actions**.
+In GitHub, make sure **Settings → Pages → Build and deployment → Source** is set to **GitHub Actions**.
 
 If the `github-pages` environment uses deployment restrictions, allow the `main` branch and tags matching `release-*` and/or `v*`.
 
-### Creating a release
+## Creating a release
 
 From `main`, tag the commit you want to publish and push the tag:
 
