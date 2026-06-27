@@ -4,7 +4,9 @@
         {% include "partials/head.html" %}
     </head>
     <body>
-        {% include "partials/header.html" %}
+        {% if config.base_url is containing("/test_main") %}
+        <div class="test-banner" role="status">Wersja testowa strony</div>
+        {% endif %} {% include "partials/header.html" %}
         <main>
             <section class="colleft"></section>
             <section class="colcenter">

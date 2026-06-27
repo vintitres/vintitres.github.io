@@ -18,6 +18,17 @@
         "ROND" 0;
 }
 
+.test-banner {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 8px 16px;
+    background-color: #f6e0c3;
+    border-bottom: 1px solid #cac5bf;
+    text-align: center;
+    font-weight: 700;
+}
+
 header {
     background-color: #cac5bf;
     padding: 2vw;
