@@ -2,7 +2,7 @@ name: Deploy Zola site to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "staging"]
   workflow_dispatch:
 
 permissions:
@@ -18,16 +18,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v4
+        with:
+          ref: main
+          path: source-main
+
+      - name: Checkout staging
+        uses: actions/checkout@v4
+        with:
+          ref: staging
+          path: source-staging
 
       - name: Install Zola
         uses: taiki-e/install-action@v2
         with:
           tool: zola@0.19.2
 
-      - name: Build site
-        run: zola build
+      - name: Build main site
+        working-directory: source-main
+        run: zola build --base-url "https://vintitres.github.io" --output-dir ../site
+
+      - name: Build staging site
+        working-directory: source-staging
+        run: zola build --base-url "https://vintitres.github.io/staging" --output-dir ../site/staging
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -35,7 +49,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ./site
 
   deploy:
     environment:
