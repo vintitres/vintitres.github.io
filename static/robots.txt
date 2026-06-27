@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: /test_main/
+
+Sitemap: https://vintitres.github.io/sitemap.xml
