@@ -66,12 +66,16 @@ th {
 }
 
 header p {
-    position: absolute;
-    right: 3vw;
-
     font-size: 32px;
     font-weight: bold;
     color: rgb(77, 77, 77);
+}
+
+.header-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
 }
 
 footer {
@@ -83,7 +87,7 @@ footer {
 
 .social-links {
     display: flex;
-    gap: 14px;
+    gap: 10px;
 }
 
 .social-link {
