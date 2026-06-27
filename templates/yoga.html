@@ -1,5 +1,2 @@
-{% extends "base.html" %}
-
-{% block content %}
-    {% include "content/yoga.html" %}
-{% endblock content %}
+{% extends "base.html" %} {% block content %} {{ page.content | safe }} {%
+endblock content %}

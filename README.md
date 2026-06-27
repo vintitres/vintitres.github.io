@@ -10,12 +10,13 @@ This site is built with [Zola](https://www.getzola.org/).
 - Header/navigation markup: `templates/partials/header.html`
 - Footer markup: `templates/partials/footer.html`
 - Navigation items: `data/navigation.toml`
+- Social links: `data/social.toml`
 - Class schedule data: `data/schedule.toml`
 - Page content templates:
   - Home: `templates/content/home.html`
   - Contact: `templates/content/contact.html`
   - Classes: `templates/content/classes.html`
-  - About yoga: `templates/content/yoga.html`
+  - About yoga: Markdown body in `content/o-jodze.md`
 - Public page entries:
   - Home: `content/_index.md`
   - Contact: `content/kontakt.md`
