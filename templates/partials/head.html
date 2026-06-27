@@ -13,7 +13,7 @@
 <title>{{ section.title }}</title>
 {% else %}
 <title>{{ config.title }}</title>
-{% endif %} {% set favicon_href = root_prefix ~ "/logo.jpg" %} {% set
-stylesheet_href = root_prefix ~ "/style.css" %}
-<link rel="icon" href="{{ favicon_href | safe }}" />
-<link rel="stylesheet" href="{{ stylesheet_href | safe }}" />
+{% endif %}
+
+<link rel="icon" href="{{ get_url(path='logo.jpg') }}" />
+<link rel="stylesheet" href="{{ get_url(path='style.css') }}" />

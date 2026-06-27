@@ -12,18 +12,14 @@ This site is built with [Zola](https://www.getzola.org/).
 - Navigation items: `data/navigation.toml`
 - Social links: `data/social.toml`
 - Class schedule data: `data/schedule.toml`
-- Page content templates:
-  - Home: `templates/content/home.html`
-  - Contact: `templates/content/contact.html`
-  - Classes: `templates/content/classes.html`
-  - About yoga: Markdown body in `content/o-jodze.md`
-- Public page entries:
+- Schedule table shortcode: `templates/shortcodes/schedule_table.html`
+- Page content:
   - Home: `content/_index.md`
   - Contact: `content/kontakt.md`
   - Classes: `content/zajecia.md`
   - About yoga: `content/o-jodze.md`
 
-The `content/*.md` files mostly define page metadata and select the template. The visible HTML content is kept in `templates/content/` so each part is easy to modify separately.
+The visible page content lives in Markdown files under `content/`. Templates in `templates/` provide layout and reusable rendering. The home page also includes a small raw HTML example inside Markdown.
 
 
 

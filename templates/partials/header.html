@@ -1,15 +1,13 @@
-{% set navigation = load_data(path='data/navigation.toml') %} {% set logo_href =
-root_prefix ~ "/logo.jpg" %}
+{% set navigation = load_data(path='data/navigation.toml') %}
 <header>
     <img
-        src="{{ logo_href | safe }}"
+        src="{{ get_url(path='logo.jpg') }}"
         alt="Logo {{ config.title }}"
         class="logo"
     />
-    {% for item in navigation.items %} {% set item_href = root_prefix ~ "/" ~
-    item.url %}
+    {% for item in navigation.items %}
     <a
-        href="{{ item_href | safe }}"
+        href="{{ get_url(path=item.url) }}"
         class="zain-regular{% if page is defined and page.extra.nav_id is defined and page.extra.nav_id == item.id %} underline{% elif section is defined and section.extra.nav_id is defined and section.extra.nav_id == item.id %} underline{% endif %}"
         >{{ item.title }}</a
     >

@@ -1,5 +1,2 @@
-{% extends "base.html" %}
-
-{% block content %}
-    {% include "content/contact.html" %}
-{% endblock content %}
+{% extends "base.html" %} {% block content %} {{ page.content | safe }} {%
+endblock content %}
