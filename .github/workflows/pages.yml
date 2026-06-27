@@ -1,8 +1,8 @@
-name: Deploy Zola site to GitHub Pages
+name: Build and deploy Zola site
 
 on:
   push:
-    branches: ["main", "staging"]
+    branches: ["main", "release"]
   workflow_dispatch:
 
 permissions:
@@ -15,20 +15,15 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-main:
+    name: Build main without deploying
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: main
-          path: source-main
-
-      - name: Checkout staging
-        uses: actions/checkout@v4
-        with:
-          ref: staging
-          path: source-staging
 
       - name: Install Zola
         uses: taiki-e/install-action@v2
@@ -36,28 +31,55 @@ jobs:
           tool: zola@0.19.2
 
       - name: Build main site
-        working-directory: source-main
+        run: zola build --base-url "https://vintitres.github.io"
+
+  build-release:
+    name: Build release for deployment
+    if: github.ref == 'refs/heads/release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release
+        uses: actions/checkout@v5
+        with:
+          ref: release
+          path: source-release
+
+      - name: Checkout main
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: source-main
+
+      - name: Install Zola
+        uses: taiki-e/install-action@v2
+        with:
+          tool: zola@0.19.2
+
+      - name: Build release site
+        working-directory: source-release
         run: zola build --base-url "https://vintitres.github.io" --output-dir ../site
 
-      - name: Build staging site
-        working-directory: source-staging
-        run: zola build --base-url "https://vintitres.github.io/staging" --output-dir ../site/staging
+      - name: Build main test site
+        working-directory: source-main
+        run: zola build --base-url "https://vintitres.github.io/test_main" --output-dir ../site/test_main
 
       - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./site
 
   deploy:
+    name: Deploy release to GitHub Pages
+    if: github.ref == 'refs/heads/release'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-release
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

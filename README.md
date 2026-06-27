@@ -42,13 +42,17 @@ zola build
 
 ## Deployment
 
-GitHub Actions deploys the site to GitHub Pages using `.github/workflows/pages.yml` whenever you push to `main` or `staging`, or when you run the workflow manually from GitHub.
+GitHub Actions uses `.github/workflows/pages.yml`.
 
-The workflow builds two versions and publishes them together:
+- Pushes to `main` build the site only. They do **not** deploy to GitHub Pages.
+- Pushes to `release` build and deploy to GitHub Pages.
+- Manual workflow runs deploy only when run from the `release` branch.
 
-- `main` → `https://vintitres.github.io/`
-- `staging` → `https://vintitres.github.io/staging/`
+When deploying from `release`, the workflow publishes two builds together:
+
+- `release` → `https://vintitres.github.io/`
+- `main` → `https://vintitres.github.io/test_main/`
 
 In the repository settings, make sure **Settings → Pages → Build and deployment → Source** is set to **GitHub Actions**.
 
-For staging deployments to trigger on pushes to `staging`, the `staging` branch must also contain `.github/workflows/pages.yml`.
+For release deployments to trigger, the `release` branch must contain `.github/workflows/pages.yml`, and the `github-pages` environment must allow deployments from `release`.
