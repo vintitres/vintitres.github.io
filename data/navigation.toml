@@ -1,0 +1,19 @@
+[[items]]
+id = "home"
+title = "Yojoga"
+url = "/"
+
+[[items]]
+id = "contact"
+title = "Kontakt"
+url = "/kontakt/"
+
+[[items]]
+id = "classes"
+title = "Zajecia"
+url = "/zajecia/"
+
+[[items]]
+id = "yoga"
+title = "O Jodze"
+url = "/o-jodze/"

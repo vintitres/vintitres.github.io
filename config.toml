@@ -1,0 +1,5 @@
+base_url = "https://vintitres.github.io"
+title = "Yojoga"
+default_language = "pl"
+compile_sass = false
+build_search_index = false

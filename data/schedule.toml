@@ -1,0 +1,31 @@
+days = [
+  "Poniedziałek",
+  "Wtorek",
+  "Środa",
+  "Czwartek",
+  "Piątek",
+  "Sobota",
+  "Niedziela",
+]
+
+[[rows]]
+cells = [
+  { text = "--" },
+  { time = "9:40-11:30", label = "początkujące" },
+  { text = "--" },
+  { time = "9:40-11:30", label = "początkujące" },
+  { text = "--" },
+  { time = "11:30-13:30", label = "początkujące" },
+  { text = "--" },
+]
+
+[[rows]]
+cells = [
+  { text = "--" },
+  { time = "16:40-18:30", label = "początkujące" },
+  { text = "--" },
+  { time = "16:40-18:30", label = "początkujące" },
+  { text = "--" },
+  { text = "--" },
+  { text = "--" },
+]
