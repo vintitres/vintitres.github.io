@@ -1,5 +1,5 @@
 +++
-title = "Yojoga"
+title = "yojoga"
 template = "home.html"
 
 [extra]

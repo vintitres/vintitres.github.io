@@ -1,4 +1,4 @@
-# Yojoga
+# yojoga
 
 This site is built with [Zola](https://www.getzola.org/).
 
