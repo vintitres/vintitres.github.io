@@ -1,9 +1,9 @@
 [[items]]
 name = "Facebook"
-label = "f"
-url = "https://www.facebook.com/yojoga"
+icon = "facebook"
+url = "https://www.facebook.com/profile.php?id=100057401652974"
 
 [[items]]
 name = "Instagram"
-label = "ig"
-url = "https://www.instagram.com/yojoga"
+icon = "instagram"
+url = "https://www.instagram.com/yojogapol"

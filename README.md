@@ -25,6 +25,8 @@ This site is built with [Zola](https://www.getzola.org/).
 
 The `content/*.md` files mostly define page metadata and select the template. The visible HTML content is kept in `templates/content/` so each part is easy to modify separately.
 
+
+
 ## Running locally
 
 Install Zola, then run:

@@ -1,19 +1,19 @@
 [[items]]
 id = "home"
 title = "yojoga"
-url = "/"
+url = ""
 
 [[items]]
 id = "contact"
 title = "Kontakt"
-url = "/kontakt/"
+url = "kontakt/"
 
 [[items]]
 id = "classes"
 title = "Zajecia"
-url = "/zajecia/"
+url = "zajecia/"
 
 [[items]]
 id = "yoga"
 title = "O Jodze"
-url = "/o-jodze/"
+url = "o-jodze/"

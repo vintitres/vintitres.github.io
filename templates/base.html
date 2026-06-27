@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+{% set_global root_prefix = "." %} {% for segment in current_path |
+default(value="/") | split(pat="/") %} {% if segment %} {% set_global
+root_prefix = root_prefix ~ "/.." %} {% endif %} {% endfor %}
+<!doctype html>
 <html lang="{{ lang | default(value=config.default_language) }}">
     <head>
         {% include "partials/head.html" %}
