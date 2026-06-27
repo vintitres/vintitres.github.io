@@ -1,5 +1,6 @@
 # Zola build output
 /public/
+/site-test/
 
 # macOS/editor noise
 .DS_Store
