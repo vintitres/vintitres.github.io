@@ -11,6 +11,7 @@ This site is built with [Zola](https://www.getzola.org/).
 - Footer markup: `templates/partials/footer.html`
 - Navigation items: `data/navigation.toml`
 - Social links: `data/social.toml`
+- Contact phone/email: `data/contact.toml`
 - Class schedule data: `data/schedule.toml`
 - Schedule table shortcode: `templates/shortcodes/schedule_table.html`
 - Page content:

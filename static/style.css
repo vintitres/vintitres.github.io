@@ -98,6 +98,62 @@ footer {
     color: #ffff;
 }
 
+.contact-cards {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    max-width: 720px;
+}
+
+.contact-card {
+    padding: 18px;
+    border: 1px solid #cac5bf;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    background-color: #fff;
+}
+
+.contact-card:hover {
+    background-color: #f6e0c3;
+    border-color: rgb(100, 100, 100);
+}
+
+.contact-card-icon {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.contact-card-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+}
+
+.contact-card strong,
+.contact-card small {
+    display: block;
+}
+
+.contact-card strong {
+    font-size: 20px;
+}
+
+.contact-card small {
+    margin-top: 2px;
+    font-size: 14px;
+}
+
 .google-sans {
     font-family: "Google Sans Flex", sans-serif;
     font-optical-sizing: auto;
