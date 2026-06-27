@@ -11,10 +11,5 @@
         class="zain-regular{% if page is defined and page.extra.nav_id is defined and page.extra.nav_id == item.id %} underline{% elif section is defined and section.extra.nav_id is defined and section.extra.nav_id == item.id %} underline{% endif %}"
         >{{ item.title }}</a
     >
-    {% endfor %}
-
-    <div class="header-actions">
-        <p>{{ config.title }}</p>
-        {% include "partials/social-links.html" %}
-    </div>
+    {% endfor %} {% include "partials/social-links.html" %}
 </header>
