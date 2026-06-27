@@ -1,6 +1,6 @@
 +++
 title = "Zajecia"
-template = "classes.html"
+template = "page.html"
 
 [extra]
 nav_id = "classes"

@@ -1,6 +1,6 @@
 +++
 title = "Kontakt"
-template = "contact.html"
+template = "page.html"
 
 [extra]
 nav_id = "contact"

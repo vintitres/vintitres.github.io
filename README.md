@@ -53,7 +53,7 @@ The contact page uses this shortcode in Markdown:
 You usually do not need to edit these for content updates:
 
 - Shared layout: `templates/base.html`
-- Page templates: `templates/home.html`, `templates/contact.html`, `templates/classes.html`, `templates/yoga.html`
+- Page content template: `templates/page.html`
 - Header/head/footer: `templates/partials/`
 - Shortcodes: `templates/shortcodes/`
 - Styles: `static/style.css`

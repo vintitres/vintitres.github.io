@@ -1,6 +1,6 @@
 +++
 title = "O Jodze"
-template = "yoga.html"
+template = "page.html"
 
 [extra]
 nav_id = "yoga"

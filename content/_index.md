@@ -1,6 +1,6 @@
 +++
 title = "yojoga"
-template = "home.html"
+template = "page.html"
 
 [extra]
 nav_id = "home"
