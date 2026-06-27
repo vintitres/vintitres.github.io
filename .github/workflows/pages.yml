@@ -2,7 +2,8 @@ name: Build and deploy Zola site
 
 on:
   push:
-    branches: ["main", "release"]
+    branches: ["main"]
+    tags: ["release-*", "v*"]
   workflow_dispatch:
 
 permissions:
@@ -15,40 +16,42 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-main:
-    name: Build main without deploying
-    if: github.ref == 'refs/heads/main'
+  build:
+    name: Build release and main preview
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v5
-        with:
-          ref: main
-
-      - name: Install Zola
-        uses: taiki-e/install-action@v2
-        with:
-          tool: zola@0.19.2
-
-      - name: Build main site
-        run: zola build --base-url "https://vintitres.github.io"
-
-  build-release:
-    name: Build release for deployment
-    if: github.ref == 'refs/heads/release'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout release
-        uses: actions/checkout@v5
-        with:
-          ref: release
-          path: source-release
-
       - name: Checkout main
         uses: actions/checkout@v5
         with:
           ref: main
           path: source-main
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Resolve release tag
+        id: release
+        working-directory: source-main
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            release_ref="${GITHUB_REF_NAME}"
+          else
+            release_ref="$(git for-each-ref --sort=-creatordate --format='%(refname:short)' refs/tags/release-* refs/tags/v* | head -n 1)"
+          fi
+
+          if [[ -z "${release_ref}" ]]; then
+            echo "No release tag found. Create a tag matching release-* or v* before deploying."
+            exit 1
+          fi
+
+          echo "Using release ref: ${release_ref}"
+          echo "ref=${release_ref}" >> "${GITHUB_OUTPUT}"
+
+      - name: Checkout release tag
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ steps.release.outputs.ref }}
+          path: source-release
 
       - name: Install Zola
         uses: taiki-e/install-action@v2
@@ -72,13 +75,12 @@ jobs:
           path: ./site
 
   deploy:
-    name: Deploy release to GitHub Pages
-    if: github.ref == 'refs/heads/release'
+    name: Deploy to GitHub Pages
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build-release
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

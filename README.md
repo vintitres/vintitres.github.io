@@ -44,15 +44,38 @@ zola build
 
 GitHub Actions uses `.github/workflows/pages.yml`.
 
-- Pushes to `main` build the site only. They do **not** deploy to GitHub Pages.
-- Pushes to `release` build and deploy to GitHub Pages.
-- Manual workflow runs deploy only when run from the `release` branch.
+Pushes to `main` and pushes to release tags both deploy one combined GitHub Pages artifact:
 
-When deploying from `release`, the workflow publishes two builds together:
+- latest release tag → `https://vintitres.github.io/`
+- current `main` → `https://vintitres.github.io/test_main/`
 
-- `release` → `https://vintitres.github.io/`
-- `main` → `https://vintitres.github.io/test_main/`
+Release tag names should match one of these patterns:
+
+- `release-*`, for example `release-2026-06-27`
+- `v*`, for example `v1.0.0`
+
+On a `main` push, the workflow finds the latest release tag by tag creation date and keeps that version at `/`, while refreshing `/test_main/` from `main`.
+
+On a release tag push, the pushed tag is deployed at `/`, and current `main` is deployed at `/test_main/`.
 
 In the repository settings, make sure **Settings → Pages → Build and deployment → Source** is set to **GitHub Actions**.
 
-For release deployments to trigger, the `release` branch must contain `.github/workflows/pages.yml`, and the `github-pages` environment must allow deployments from `release`.
+If the `github-pages` environment uses deployment restrictions, allow the `main` branch and tags matching `release-*` and/or `v*`.
+
+### Creating a release
+
+From `main`, tag the commit you want to publish and push the tag:
+
+```sh
+git checkout main
+git pull
+git tag release-2026-06-27
+git push origin release-2026-06-27
+```
+
+Or use a version tag:
+
+```sh
+git tag v1.0.0
+git push origin v1.0.0
+```
