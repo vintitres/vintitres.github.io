@@ -1,0 +1,8 @@
+{% set social = load_data(path='data/social.toml') %}
+<nav class="social-links" aria-label="Social media">
+    {% for item in social.items %}
+        <a class="social-link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ item.name }}">
+            <span aria-hidden="true">{{ item.label }}</span>
+        </a>
+    {% endfor %}
+</nav>

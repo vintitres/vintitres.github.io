@@ -1,0 +1,9 @@
+[[items]]
+name = "Facebook"
+label = "f"
+url = "https://www.facebook.com/yojoga"
+
+[[items]]
+name = "Instagram"
+label = "ig"
+url = "https://www.instagram.com/yojoga"
