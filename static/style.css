@@ -139,6 +139,13 @@ footer {
     font-weight: bold;
 }
 
+.html-example {
+    margin-top: 20px;
+    padding: 16px;
+    border-left: 4px solid #cac5bf;
+    background-color: #f6e0c3;
+}
+
 .colleft,
 .colright {
     display: flex;
