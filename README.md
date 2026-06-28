@@ -54,7 +54,7 @@ You usually do not need to edit these for content updates:
 
 - Shared layout: `templates/base.html`
 - Page content template: `templates/page.html`
-- Header/head/footer: `templates/partials/`
+- Header/head/footer and JSON-LD metadata: `templates/partials/`
 - Shortcodes: `templates/shortcodes/`
 - Styles: `static/style.css`
 - Static assets and favicons: `static/`
