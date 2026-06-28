@@ -11,12 +11,13 @@ For normal content changes, edit only the Markdown files in `content/`:
 - Classes: `content/zajecia.md`
 - About yoga: `content/o-jodze.md`
 
-Markdown internal links should use Zola's page-link syntax so they work both on production and `/test_main/`:
+Markdown internal links should use Zola's page-link syntax so they work both on production and
+`/test_main/`:
 
 ```md
-[Kontakt](@/kontakt.md)
-[Zajęcia](@/zajecia.md)
-[O Jodze](@/o-jodze.md)
+- [Kontakt](@/kontakt.md)
+- [Zajęcia](@/zajecia.md)
+- [O Jodze](@/o-jodze.md)
 ```
 
 External links use normal Markdown:
@@ -25,7 +26,8 @@ External links use normal Markdown:
 [Instagram](https://www.instagram.com/yojogapol)
 ```
 
-Raw HTML can be placed directly in Markdown when needed. The home page contains a small example using `<div class="html-example">...</div>`.
+Raw HTML can be placed directly in Markdown when needed. The home page contains a small example
+using `<div class="html-example">...</div>`.
 
 ## Editing structured data
 
@@ -90,20 +92,25 @@ Pushes to `main` and pushes to release tags both deploy one combined GitHub Page
 - latest release tag → `https://vintitres.github.io/`
 - current `main` → `https://vintitres.github.io/test_main/`
 
-The `/test_main/` version shows a persistent test banner. Crawlers are asked not to index it via `static/robots.txt`.
+The `/test_main/` version shows a persistent test banner. Crawlers are asked not to index it via
+`static/robots.txt`.
 
 Release tag names should match one of these patterns:
 
 - `release-*`, for example `release-2026-06-27`
 - `v*`, for example `v1.0.0`
 
-On a `main` push, the workflow finds the latest release tag by tag creation date and keeps that version at `/`, while refreshing `/test_main/` from `main`.
+On a `main` push, the workflow finds the latest release tag by tag creation date and keeps that
+version at `/`, while refreshing `/test_main/` from `main`.
 
-On a release tag push, the pushed tag is deployed at `/`, and current `main` is deployed at `/test_main/`.
+On a release tag push, the pushed tag is deployed at `/`, and current `main` is deployed at
+`/test_main/`.
 
-In GitHub, make sure **Settings → Pages → Build and deployment → Source** is set to **GitHub Actions**.
+In GitHub, make sure **Settings → Pages → Build and deployment → Source** is set to **GitHub
+Actions**.
 
-If the `github-pages` environment uses deployment restrictions, allow the `main` branch and tags matching `release-*` and/or `v*`.
+If the `github-pages` environment uses deployment restrictions, allow the `main` branch and tags
+matching `release-*` and/or `v*`.
 
 ## Creating a release
 

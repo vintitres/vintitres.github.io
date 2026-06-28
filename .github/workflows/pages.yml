@@ -64,7 +64,8 @@ jobs:
 
       - name: Build main test site
         working-directory: source-main
-        run: zola build --base-url "https://vintitres.github.io/test_main" --output-dir ../site/test_main
+        run: zola build --base-url "https://vintitres.github.io/test_main" --output-dir
+          ../site/test_main
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6

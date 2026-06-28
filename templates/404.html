@@ -1,10 +1,9 @@
-{% extends "base.html" %} {% block content %}
-<section class="not-found" aria-labelledby="not-found-title">
+{% extends "base.html" %}
+{% block content %}
+  <section class="not-found" aria-labelledby="not-found-title">
     <p class="not-found-code" aria-hidden="true">404</p>
     <h1 id="not-found-title">Nie znaleziono strony</h1>
     <p>Wygląda na to, że ta strona nie istnieje albo została przeniesiona.</p>
-    <a class="not-found-link" href="{{ get_url(path='/') }}"
-        >Wróć na stronę główną</a
-    >
-</section>
+    <a class="not-found-link" href="{{ get_url(path='/') }}">Wróć na stronę główną</a>
+  </section>
 {% endblock content %}

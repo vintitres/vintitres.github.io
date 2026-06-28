@@ -1,30 +1,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=UnifrakturCook:wght@700&family=UnifrakturMaguntia&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap"
-    rel="stylesheet"
-/>
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=UnifrakturCook:wght@700&family=UnifrakturMaguntia&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap"
+      rel="stylesheet" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#cac5bf" />
-
-{% if page is defined %} {% set page_title = page.title %} {% set
-page_description = page.extra.description |
-default(value=config.extra.description) %} {% set page_url = page.permalink %}
-{% elif section is defined %} {% set page_title = section.title %} {% set
-page_description = section.extra.description |
-default(value=config.extra.description) %} {% set page_url = section.permalink
-%} {% else %} {% set page_title = config.title %} {% set page_description =
-config.extra.description %} {% set page_url = config.base_url %} {% endif %} {%
-if page_title == config.title %} {% set full_title = config.title %} {% else %}
-{% set full_title = page_title ~ " | " ~ config.title %} {% endif %} {% set
-social_image = get_url(path='logo.jpg') %}
-
+{% if page is defined %}
+  {% set page_title = page.title %} {% set page_description = page.extra.description | default(value=config.extra.description) %} {% set page_url = page.permalink %}
+{% elif section is defined %}
+  {% set page_title = section.title %} {% set page_description = section.extra.description | default(value=config.extra.description) %} {% set page_url = section.permalink %}
+{% else %}
+  {% set page_title = config.title %} {% set page_description = config.extra.description %} {% set page_url = config.base_url %}
+{% endif %}
+{% if page_title ==
+  config.title %}
+  {% set full_title = config.title %}
+{% else %}
+  {% set full_title = page_title ~ " |
+    " ~ config.title %}
+{% endif %}
+{% set social_image = get_url(path='logo.jpg') %}
 <title>{{ full_title }}</title>
 <meta name="description" content="{{ page_description }}" />
 <link rel="canonical" href="{{ page_url | safe }}" />
-
 <meta property="og:site_name" content="{{ config.title }}" />
 <meta property="og:title" content="{{ full_title }}" />
 <meta property="og:description" content="{{ page_description }}" />
@@ -32,31 +30,22 @@ social_image = get_url(path='logo.jpg') %}
 <meta property="og:url" content="{{ page_url | safe }}" />
 <meta property="og:image" content="{{ social_image | safe }}" />
 <meta property="og:locale" content="pl_PL" />
-
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="{{ full_title }}" />
 <meta name="twitter:description" content="{{ page_description }}" />
 <meta name="twitter:image" content="{{ social_image | safe }}" />
-
 {% include "partials/jsonld.html" %}
-
 <link rel="icon" href="{{ get_url(path='favicon.ico') }}" sizes="any" />
-<link
-    rel="icon"
-    type="image/png"
-    sizes="16x16"
-    href="{{ get_url(path='icons/favicon-16x16.png') }}"
-/>
-<link
-    rel="icon"
-    type="image/png"
-    sizes="32x32"
-    href="{{ get_url(path='icons/favicon-32x32.png') }}"
-/>
-<link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="{{ get_url(path='icons/apple-touch-icon.png') }}"
-/>
+<link rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ get_url(path='icons/favicon-16x16.png') }}" />
+<link rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ get_url(path='icons/favicon-32x32.png') }}" />
+<link rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ get_url(path='icons/apple-touch-icon.png') }}" />
 <link rel="manifest" href="{{ get_url(path='site.webmanifest') }}" />
 <link rel="stylesheet" href="{{ get_url(path='style.css') }}" />

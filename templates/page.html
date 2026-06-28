@@ -1,9 +1,7 @@
 {% extends "base.html" %}
-
 {% block content %}
-    {% if page is defined %}
-        {{ page.content | safe }}
-    {% elif section is defined %}
-        {{ section.content | safe }}
-    {% endif %}
+  {% if page is defined %}
+    {{ page.content | safe }} {%
+    elif section is defined %} {{ section.content | safe }}
+  {% endif %}
 {% endblock content %}

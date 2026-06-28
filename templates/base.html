@@ -1,20 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ lang | default(value=config.default_language) }}">
-    <head>
-        {% include "partials/head.html" %}
-    </head>
-    <body>
-        <a class="skip-link" href="#content">Przejdź do treści</a>
-        {% if config.base_url is containing("/test_main") %}
-        <div class="test-banner" role="status">Wersja testowa strony</div>
-        {% endif %} {% include "partials/header.html" %}
-        <main id="content" tabindex="-1">
-            <section class="colleft" aria-hidden="true"></section>
-            <section class="colcenter">
-                {% block content %}{% endblock content %}
-            </section>
-            <section class="colright" aria-hidden="true"></section>
-        </main>
-        {% include "partials/footer.html" %}
-    </body>
+  <head>{% include "partials/head.html" %}</head>
+  <body>
+    <a class="skip-link" href="#content">Przejdź do treści</a>
+    {% if config.base_url is containing("/test_main") %}
+      <div class="test-banner" role="status">Wersja testowa strony</div>
+    {% endif %}
+    {% include "partials/header.html" %}
+    <main id="content" tabindex="-1">
+      <section class="colleft" aria-hidden="true">
+      </section>
+      <section class="colcenter">
+        {% block content %}
+        {% endblock content %}
+      </section>
+      <section class="colright" aria-hidden="true">
+      </section>
+    </main>
+    {% include "partials/footer.html" %}
+  </body>
 </html>
