@@ -7,21 +7,22 @@
     <thead>
       <tr>
         {% for day in schedule.days %}
-          <th scope="col">{{ day }}</th>
+          <th scope="col">{{ day.name }}</th>
         {% endfor %}
       </tr>
     </thead>
     <tbody>
-      {% for row in schedule.rows %}
+      {% for i in range(end=2) %}
         <tr>
-          {% for cell in row.cells %}
+          {% for day in schedule.days %}
             <td>
-              {% if cell.time is defined %}
-                {{ cell.time }}
+              {% if day.schedule and i < day.schedule | length %}
+                {% set slot = day.schedule[i] %}
+                {{ slot.time }}
                 <br />
-                <p class="small-text">{{ cell.label }}</p>
+                <p class="small-text">{{ slot.label }}</p>
               {% else %}
-                {{ cell.text }}
+                --
               {% endif %}
             </td>
           {% endfor %}
@@ -36,24 +37,25 @@
   <table class="schedule-table-mobile">
     <caption>Grafik zajęć jogi</caption>
     <tbody>
-      {% for day_idx in range(end=schedule.days | length) %}
+      {% for day in schedule.days %}
         <tr class="day-row">
-          <th scope="row" class="day-header">{{ schedule.days[day_idx] }}</th>
+          <th scope="row" class="day-header">{{ day.name }}</th>
         </tr>
-        {% for row in schedule.rows %}
-          <tr class="time-row">
-            <td class="time-cell">
-              {% set cell = row.cells[day_idx] %}
-              {% if cell.time is defined %}
-                {{ cell.time }}
+        {% if day.schedule and day.schedule | length > 0 %}
+          {% for slot in day.schedule %}
+            <tr class="time-row">
+              <td class="time-cell">
+                {{ slot.time }}
                 <br />
-                <p class="small-text">{{ cell.label }}</p>
-              {% else %}
-                {{ cell.text }}
-              {% endif %}
-            </td>
+                <p class="small-text">{{ slot.label }}</p>
+              </td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          <tr class="time-row">
+            <td class="time-cell">--</td>
           </tr>
-        {% endfor %}
+        {% endif %}
       {% endfor %}
     </tbody>
   </table>
