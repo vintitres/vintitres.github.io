@@ -1,25 +1,20 @@
-{% set contact = load_data(path='data/contact.toml') %}
-{% set social = load_data(path='data/social.toml') %}
+{% set contact = load_data(path='data/contact.toml') %} {% set social = load_data(path='data/social.toml') %}
 <script type="application/ld+json">
   {
-      "@context": "https://schema.org",
-      "@type": "SportsActivityLocation",
-      "@id": "{{ get_url(path='/') | safe }}#business",
-      "name": "{{ config.title }}",
-      "url": "{{ get_url(path='/') | safe }}",
-      "description": "{{ config.extra.description }}",
-      "image": "{{ get_url(path='logo.jpg') | safe }}",
-      "logo": "{{ get_url(path='logo.jpg') | safe }}",
-      "telephone": "{{ contact.phone_schema }}",
-      "email": "{{ contact.email_label }}",
-      "founder": {
-          "@type": "Person",
-          "name": "{{ contact.owner_name }}"
-      },
-      "sameAs": [
-          {% for item in social.items %}
-          "{{ item.url | safe }}"{% if not loop.last %},{% endif %}
-          {% endfor %}
-      ]
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "@id": "{{ get_url(path='/') | safe }}#business",
+    "name": "{{ config.title }}",
+    "url": "{{ get_url(path='/') | safe }}",
+    "description": "{{ config.extra.description }}",
+    "image": "{{ get_url(path='logo.jpg') | safe }}",
+    "logo": "{{ get_url(path='logo.jpg') | safe }}",
+    "telephone": "{{ contact.phone_schema }}",
+    "email": "{{ contact.email_label }}",
+    "founder": {
+      "@type": "Person",
+      "name": "{{ contact.owner_name }}"
+    },
+    "sameAs": ["{{ contact.facebook_url | safe }}", "{{ contact.instagram_url | safe }}"]
   }
 </script>

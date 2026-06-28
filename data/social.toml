@@ -1,9 +1,15 @@
 [[items]]
 name = "Facebook"
 icon = "facebook"
-url = "https://www.facebook.com/profile.php?id=100057401652974"
 
 [[items]]
 name = "Instagram"
 icon = "instagram"
-url = "https://www.instagram.com/yojogapol"
+
+[[items]]
+name = "Email"
+icon = "email"
+
+[[items]]
+name = "Telefon"
+icon = "phone"
