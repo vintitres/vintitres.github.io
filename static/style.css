@@ -204,6 +204,14 @@ footer {
   max-width: 720px;
 }
 
+@media (max-width: 768px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: 12px;
+  }
+}
+
 .contact-card {
   padding: 18px;
   border: 1px solid #cac5bf;
@@ -213,6 +221,15 @@ footer {
   gap: 14px;
   text-decoration: none;
   background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .contact-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 14px;
+  }
 }
 
 .contact-card:hover {
