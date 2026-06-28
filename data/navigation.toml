@@ -10,7 +10,7 @@ url = "/kontakt/"
 
 [[items]]
 id = "classes"
-title = "Zajecia"
+title = "Zajęcia"
 url = "/zajecia/"
 
 [[items]]
