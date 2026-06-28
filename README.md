@@ -57,7 +57,7 @@ You usually do not need to edit these for content updates:
 - Header/head/footer: `templates/partials/`
 - Shortcodes: `templates/shortcodes/`
 - Styles: `static/style.css`
-- Static assets: `static/`
+- Static assets and favicons: `static/`
 
 ## Running locally
 
