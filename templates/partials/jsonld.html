@@ -1,4 +1,4 @@
-{% set contact = load_data(path='data/contact.toml') %} {% set social = load_data(path='data/social.toml') %}
+{% set contact = load_data(path='data/contact.toml') %}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -15,6 +15,11 @@
       "@type": "Person",
       "name": "{{ contact.owner_name }}"
     },
-    "sameAs": ["{{ contact.facebook_url | safe }}", "{{ contact.instagram_url | safe }}"]
+    "sameAs": [
+      {%- set social_items = contact.items | filter(attribute="is_social", value=true) -%}
+      {%- for item in social_items -%}
+        "{{ item.url | safe }}"{%- if not loop.last -%},{%- endif -%}
+      {%- endfor -%}
+    ]
   }
 </script>

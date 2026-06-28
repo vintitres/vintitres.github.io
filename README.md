@@ -34,8 +34,7 @@ using `<div class="html-example">...</div>`.
 Use these files for values that are reused by templates/shortcodes:
 
 - Navigation: `data/navigation.toml`
-- Social links: `data/social.toml`
-- Contact phone/email: `data/contact.toml`
+- Contact details and social links: `data/contact.toml`
 - Class schedule: `data/schedule.toml`
 
 The classes page uses this shortcode in Markdown:
