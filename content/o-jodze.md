@@ -4,6 +4,7 @@ template = "page.html"
 
 [extra]
 nav_id = "yoga"
+description = "Informacje o jodze, praktyce i podejściu yojoga."
 +++
 
 Witaj na stronie o Jodze yojoga!

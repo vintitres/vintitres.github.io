@@ -4,6 +4,7 @@ template = "page.html"
 
 [extra]
 nav_id = "home"
+description = "Joga w Policach i Szczecinie. Zajęcia dla początkujących i praktykujących."
 +++
 
 Witaj na stronie głównej yojoga!

@@ -4,6 +4,7 @@ template = "page.html"
 
 [extra]
 nav_id = "classes"
+description = "Grafik zajęć jogi yojoga dla grup początkujących i praktykujących."
 +++
 
 ## Witaj na stronie zajęć yojoga!
