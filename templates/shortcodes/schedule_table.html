@@ -1,26 +1,28 @@
 {% set schedule = load_data(path='data/schedule.toml') %}
-<table>
-    <thead>
-        <tr>
-            {% for day in schedule.days %}
-                <th>{{ day }}</th>
-            {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-        {% for row in schedule.rows %}
+<div class="table-wrapper">
+    <table>
+        <caption>
+            Grafik zajęć jogi
+        </caption>
+        <thead>
             <tr>
-                {% for cell in row.cells %}
-                    <td>
-                        {% if cell.time is defined %}
-                            {{ cell.time }}<br>
-                            <p class="small-text">{{ cell.label }}</p>
-                        {% else %}
-                            {{ cell.text }}
-                        {% endif %}
-                    </td>
+                {% for day in schedule.days %}
+                <th scope="col">{{ day }}</th>
                 {% endfor %}
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for row in schedule.rows %}
+            <tr>
+                {% for cell in row.cells %}
+                <td>
+                    {% if cell.time is defined %} {{ cell.time }}<br />
+                    <p class="small-text">{{ cell.label }}</p>
+                    {% else %} {{ cell.text }} {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

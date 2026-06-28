@@ -3,8 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 
-    transition: all 0.1s ease;
-
     color: rgb(77, 77, 77);
 
     font-family: "Google Sans Flex", sans-serif;
@@ -29,6 +27,23 @@
     font-weight: 700;
 }
 
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    z-index: 20;
+    padding: 10px 14px;
+    background-color: #fff;
+    color: rgb(77, 77, 77);
+    border: 2px solid rgb(77, 77, 77);
+    border-radius: 8px;
+    transform: translateY(-160%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
 header {
     background-color: #cac5bf;
     padding: 2vw;
@@ -44,6 +59,12 @@ header img {
     display: block;
 }
 
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
 header a {
     color: rgb(100, 100, 100);
     text-decoration: none;
@@ -52,6 +73,13 @@ header a {
 
 header a:hover {
     color: #ffff;
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid #f6e0c3;
+    outline-offset: 3px;
 }
 
 main {
@@ -64,15 +92,31 @@ main {
     margin-right: 0vw;
 }
 
-table,
+.table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 td,
-tr,
 th {
     padding: 16px;
-
     text-align: center;
-
-    border-collapse: collapse;
     border: solid 1px rgb(197, 197, 197);
 }
 
@@ -190,6 +234,43 @@ footer {
     margin-top: 20px;
     padding: 16px;
     border-left: 4px solid #cac5bf;
+    background-color: #f6e0c3;
+}
+
+.not-found {
+    max-width: 640px;
+    padding: 48px 0;
+}
+
+.not-found-code {
+    margin-bottom: 8px;
+    color: #cac5bf;
+    font-size: clamp(72px, 12vw, 140px);
+    font-weight: 900;
+    line-height: 1;
+}
+
+.not-found h1 {
+    margin-bottom: 12px;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.not-found p {
+    margin-bottom: 20px;
+}
+
+.not-found-link {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background-color: #cac5bf;
+    color: rgb(77, 77, 77);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.not-found-link:hover {
     background-color: #f6e0c3;
 }
 

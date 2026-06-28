@@ -5,11 +5,26 @@
         alt="Logo {{ config.title }}"
         class="logo"
     />
-    {% for item in navigation.items %}
-    <a
-        href="{{ get_url(path=item.url) }}"
-        class="zain-regular{% if page is defined and page.extra.nav_id is defined and page.extra.nav_id == item.id %} underline{% elif section is defined and section.extra.nav_id is defined and section.extra.nav_id == item.id %} underline{% endif %}"
-        >{{ item.title }}</a
-    >
-    {% endfor %} {% include "partials/social-links.html" %}
+    <nav class="site-nav" aria-label="Główna nawigacja">
+        {% for item in navigation.items %} {% set active_page = page is defined
+        and page.extra.nav_id is defined and page.extra.nav_id == item.id %} {%
+        set active_section = section is defined and section.extra.nav_id is
+        defined and section.extra.nav_id == item.id %}
+        <a
+            href="{{ get_url(path=item.url) }}"
+            class="zain-regular{% if active_page or active_section %} underline{% endif %}"
+            {%
+            if
+            active_page
+            or
+            active_section
+            %}aria-current="page"
+            {%
+            endif
+            %}
+            >{{ item.title }}</a
+        >
+        {% endfor %}
+    </nav>
+    {% include "partials/social-links.html" %}
 </header>

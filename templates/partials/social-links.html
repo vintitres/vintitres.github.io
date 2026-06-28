@@ -3,7 +3,7 @@
     {% for item in social.items %}
     <a
         class="social-link"
-        href="{{ item.url }}"
+        href="{{ item.url | safe }}"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="{{ item.name }}"
