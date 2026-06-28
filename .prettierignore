@@ -1,0 +1,7 @@
+public/
+target/
+.git/
+node_modules/
+*.toml
+templates/
+*.html
