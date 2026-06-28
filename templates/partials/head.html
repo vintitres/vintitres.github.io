@@ -6,18 +6,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#cac5bf" />
 {% if page is defined %}
-  {% set page_title = page.title %} {% set page_description = page.extra.description | default(value=config.extra.description) %} {% set page_url = page.permalink %}
+  {% set page_title = page.title %}
+  {% set page_description = page.extra.description | default(value=config.extra.description) %}
+  {% set page_url = page.permalink %}
 {% elif section is defined %}
-  {% set page_title = section.title %} {% set page_description = section.extra.description | default(value=config.extra.description) %} {% set page_url = section.permalink %}
+  {% set page_title = section.title %}
+  {% set page_description = section.extra.description | default(value=config.extra.description) %}
+  {% set page_url = section.permalink %}
 {% else %}
-  {% set page_title = config.title %} {% set page_description = config.extra.description %} {% set page_url = config.base_url %}
+  {% set page_title = config.title %}
+  {% set page_description = config.extra.description %}
+  {% set page_url = config.base_url %}
 {% endif %}
-{% if page_title ==
-  config.title %}
+{% if page_title == config.title %}
   {% set full_title = config.title %}
 {% else %}
-  {% set full_title = page_title ~ " |
-    " ~ config.title %}
+  {% set full_title = page_title ~ " | " ~ config.title %}
 {% endif %}
 {% set social_image = get_url(path='logo.jpg') %}
 <title>{{ full_title }}</title>

@@ -1,4 +1,5 @@
-{% set social = load_data(path='data/social.toml') %} {% set contact = load_data(path='data/contact.toml') %}
+{% set social = load_data(path='data/social.toml') %}
+{% set contact = load_data(path='data/contact.toml') %}
 <div class="contact-cards">
   <a class="contact-card" href="{{ contact.phone_url | safe }}">
     <span class="contact-card-icon" aria-hidden="true">☎</span>
