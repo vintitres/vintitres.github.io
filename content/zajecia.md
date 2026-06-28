@@ -1,5 +1,5 @@
 +++
-title = "Zajecia"
+title = "Zajęcia"
 template = "page.html"
 
 [extra]
