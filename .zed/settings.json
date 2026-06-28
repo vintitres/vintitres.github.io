@@ -1,0 +1,20 @@
+{
+  "languages": {
+    "HTML": {
+      "formatter": {
+        "external": {
+          "command": "python3",
+          "arguments": [
+            "-m",
+            "djlint",
+            "--reformat",
+            "--configuration",
+            "{workspace_root}/.djlintrc",
+            "-"
+          ]
+        }
+      },
+      "format_on_save": "on"
+    }
+  }
+}
