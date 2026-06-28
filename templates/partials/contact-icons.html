@@ -1,0 +1,14 @@
+{% set contact = load_data(path='data/contact.toml') %}
+<nav class="contact-icons" aria-label="Contact and social links">
+  {% for item in contact.items %}
+    <a class="contact-icon"
+       href="{{ item.url | safe }}"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="{{ item.name }}">
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        {{ item.icon_inner | safe }}
+      </svg>
+    </a>
+  {% endfor %}
+</nav>
