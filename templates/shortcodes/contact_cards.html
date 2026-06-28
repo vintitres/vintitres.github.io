@@ -3,10 +3,7 @@
   {% for item in contact.items %}
     <a class="contact-card"
        href="{{ item.url | safe }}"
-       {% if item.is_social %}
-       target="_blank"
-       rel="noopener noreferrer"
-       {% endif %}>
+       {% if item.is_social %} target="_blank" rel="noopener noreferrer" {% endif %}>
       <span class="contact-card-icon" aria-hidden="true">
         <svg viewBox="0 0 16 16" focusable="false">
           {{ item.icon_inner | safe }}
