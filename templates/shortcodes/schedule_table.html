@@ -1,9 +1,9 @@
 {% set schedule = load_data(path='data/schedule.toml') %}
-<div class="table-wrapper">
-  <table>
-    <caption>
-      Grafik zajęć jogi
-    </caption>
+
+<!-- Desktop view -->
+<div class="table-wrapper desktop-table-wrapper">
+  <table class="schedule-table">
+    <caption>Grafik zajęć jogi</caption>
     <thead>
       <tr>
         {% for day in schedule.days %}
@@ -26,6 +26,34 @@
             </td>
           {% endfor %}
         </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- Mobile view -->
+<div class="table-wrapper mobile-table-wrapper">
+  <table class="schedule-table-mobile">
+    <caption>Grafik zajęć jogi</caption>
+    <tbody>
+      {% for day_idx in range(end=schedule.days | length) %}
+        <tr class="day-row">
+          <th scope="row" class="day-header">{{ schedule.days[day_idx] }}</th>
+        </tr>
+        {% for row in schedule.rows %}
+          <tr class="time-row">
+            <td class="time-cell">
+              {% set cell = row.cells[day_idx] %}
+              {% if cell.time is defined %}
+                {{ cell.time }}
+                <br />
+                <p class="small-text">{{ cell.label }}</p>
+              {% else %}
+                {{ cell.text }}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
       {% endfor %}
     </tbody>
   </table>
