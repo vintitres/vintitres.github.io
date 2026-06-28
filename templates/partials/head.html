@@ -38,6 +38,8 @@ social_image = get_url(path='logo.jpg') %}
 <meta name="twitter:description" content="{{ page_description }}" />
 <meta name="twitter:image" content="{{ social_image | safe }}" />
 
+{% include "partials/jsonld.html" %}
+
 <link rel="icon" href="{{ get_url(path='favicon.ico') }}" sizes="any" />
 <link
     rel="icon"
